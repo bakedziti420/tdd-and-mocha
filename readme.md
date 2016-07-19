@@ -1,5 +1,13 @@
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
+<!-- 1:00 5 minutes -->
+
+<!--Hook: Has anyone here tried fixing a car or complicated appliance?  You get the piece back in place, or the wheel on straight.  Then what do you do?  (For me, back up and cross fingers that it works.)  The idea behind TDD is to gain a higher confidence that before we flip that switch, before we try to go 80 miles an hour on I-25, the app we are building does what the customer wants.  
+
+Whether you like it or not, you will have to test your software somehow before you get it to your users.  Today, we'll talk about how to do that *with software itself*.  Woo-hoo, using software to test software!  -->
+
+![](resources/xzibit_testing_software.jpg)
+
 # Testing with RSpec
 
 ### Why is this important?
@@ -18,6 +26,8 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 - **Program** in Ruby
 - **Pass tests** in a TDD manner
+
+<!--9:05 5 minutes -->
 
 ## Do You Test?
 
@@ -47,6 +57,8 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 </details>
 
+<!-- 9:10 10 minutes -->
+
 ## Unit vs Acceptance Tests
 
 **Unit tests** check the smallest level; the functionality of a specific method (what we'll be discussing mostly today).
@@ -67,6 +79,9 @@ We've asked you to write user stories. Writing acceptance tests is a very simila
 
 When we think of "testing" we tend to think of something you do *after* you've created something, to make sure it works. With TDD, you're encouraged to write the tests *first* before you even start writing actual code.
 
+<!-- Catch-phrase with Unit Tests, Acceptance Tests, TDD, Code Coverage -->
+
+<!-- 9:20 5 minutes -->
 ## TDD Review
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
@@ -94,6 +109,8 @@ When we think of "testing" we tend to think of something you do *after* you've c
 RSpec makes it easier to write tests. Essentially it's a Domain Specific Language for writing live specifications about your code.  It was released on May 18, 2007, so it's been around for a while.
 
 > A DSL, "Domain Specific Language", is created specifically to solve problems in a particular domain and is not intended to be able to solve problems outside of it. Other DSLs include HTML or SQL. This is opposed to domain independent languages like Java, C++, Ruby, Python, PHP, JavaScript, Clojure, Rust, Scala, Erlang etc that are Turing complete (can solve any possible computation problem).
+
+<!-- 9:25 10 minutes -->
 
 ## RSpec Example
 
@@ -169,6 +186,10 @@ end
 
 >What does `expect(matt).to be_an_instance_of(Person)` mean in regular English?
 
+<!-- 9:35 25 minutes -->
+
+<!-- Half Mast -->
+
 ## Creating a Unit Test using RSpec
 
 We are going to be creating something similar to the above example. Instead we will be writing a spec for creating a new ruby class of `Dog`.
@@ -233,6 +254,10 @@ Make the file and run the tests again. What happens this time? Does the constant
 Dog = Object.new
 ```
 
+<!-- End half-mast -->
+
+<!-- Half-mast again -->
+
 Realistically we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
 
 **/spec/dog_spec.rb**
@@ -292,14 +317,16 @@ We use the pattern `expect(IUT)` to "wrap" the ***Item Under Test***, so that it
 
 [RSpec documentation Built in Matchers](https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers)
 
+<!-- End half-mast -->
+
 >What is the minimal amount of code we can write in `models/dog.rb` to pass our current expectation?
 
 ##More expectations!
 
-
+<!-- Half-mast -->
 ###Naming your Dog
 
-Let's give our dog instances the method to get and set an attribute `name`. Obviously let's first start with the specfication.
+Let's give our dog instances the method to get and set an attribute `name`. As usual, let's first start with the specfication.
 
 ```ruby
 describe Dog do
@@ -314,9 +341,15 @@ describe Dog do
 end
 ```
 
+<!-- 10:00 15 minutes -->
+
+<!-- End half-mast -->
+
 >What is the minimal code one could write to pass these specifications?
 
 ### Challenge: Hungry Dog
+
+<!-- Half-mast -->
 
 Add an expectation to the dog that, "allows the reading and writing of a hunger level". When complete, ensure the tests are writing correctly by watching them fail. Finally implement the code that passes the new expectation.
 
@@ -337,21 +370,15 @@ describe Dog do
 end
 ```
 
-**/models/dog.rb**
-
-```ruby
-class Dog
-  #...
-  attr_accessor :hunger_level
-
-end
-```
-
 </details>
+
+<!-- End half-mast -->
 
 ###Feeding the Dog
 
-Let's impliment a method `eat` which decrements a dog's hunger level when invoked. How would we translate this specification in RSpec tests?
+<!-- Half-mast -->
+
+Let's implement a method `eat` which decrements a dog's hunger level when invoked. How would we translate this specification in RSpec tests?
 
 **/spec/dog_spec.rb**
 
@@ -369,26 +396,15 @@ describe Dog do
 end
 ```
 
+<!-- End half-mast -->
+
 ###Challenge: Teach the Dog to Eat
 
 Write the code that passes the above specifications.
 
-<details><summary>Example solution</summary>
-
-**/models/dog.rb**
-
-```ruby
-class Dog
-  #...
-  def eat
-    self.hunger_level -= 1
-  end
-end
-```
-
-</details>
-
 ###Context
+
+<!-- Half-mast -->
 
 Image we want the eat method to behave differently in different contexts. For example if the dog is not hungry and has a `hunger_level` of `0`, we don't want the eat method to continue decrementing. In order to setup different scenarios or contexts in our specifications, we can use the `context` keyword. Generally, context blocks are a *"nice to have"* in testing and improve **organization** and **readability**.
 
@@ -421,24 +437,13 @@ describe Dog do
 end
 ```
 
+<!-- End half-mast -->
+
 ###Challenge: Don't Over Eat
 
 Write the code to pass the above specs!
 
-<details><summary>Example solution</summary>
-
-**/models/dog.rb**
-
-```ruby
-class Dog
-  #...
-  def eat
-    self.hunger_level -= 1 if hunger_level > 0
-  end
-end
-```
-
-</details>
+<!-- 2:30 10 minutes -->
 
 ##Refactoring
 
@@ -585,15 +590,19 @@ end
 >
 >**before(:all)** is the same concept, except it only runs **once**, *before all* the tests inside it have started.
 
+<!--2:40 15 minutes -->
+
 ## Challenge: Cereal Robot Exercise
 
 [Watch this video](https://www.youtube.com/watch?v=E2evC2xTNWg).
 
-Split up into groups of 4. For 15 minutes, on a whiteboard, work with your group to draft the unit tests for this cereal-delivering robot.
+Split up into groups of 3 or 4. For 15 minutes, on a whiteboard, work with your group to draft the unit tests for this cereal-delivering robot.
 
 Goal: When all the tests pass, that means the robot works. However, you're only writing **pending** tests -- don't actually write the code that would make the tests pass.
 
 Constraints: Try to write everything as `describe`, `context`, and `it` blocks. Method names should start with `#`.
+
+<!-- 2:55 5 minutes -->
 
 ## Garnet Example
 
@@ -601,9 +610,13 @@ RSpec is used to test Garnet, a GA attendance/homework tracking app in some loca
 
 Here's what the [model tests](https://github.com/ga-dc/garnet/tree/master/spec/models) look like. Checkout a few of them... Seem familiar?
 
+<!-- 3:00 40 minutes -->
+
 ## Challenge: Grand Prix Racing
 
  * Clone down [grand-prix-testing](https://github.com/den-wdi-1/car-racing-lab) and follow the instructions.
+
+<!--3:40 5 minutes -->
 
 ## Closing
 
