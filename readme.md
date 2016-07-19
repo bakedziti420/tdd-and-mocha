@@ -4,7 +4,7 @@
 
 ### Why is this important?
 
-Test Driven Development leads to better code. TDD is extremely helpful when implimenting software according to predefined specifications and expectations. Previously, we've run tests and passed them; now, we'll see how to write them.
+Test Driven Development leads to better code. TDD is extremely helpful when implementing software according to predefined specifications and expectations. Previously, we've run tests and passed them; now, we'll see how to write them.
 
 ### What are the objectives?
 *After this workshop, developers will be able to:*
@@ -171,11 +171,11 @@ end
 
 ## Creating a Unit Test using RSpec
 
-We are going to be creating something similar to the above example. Instead we will be writing a spec for creating a new ruby class of `Dog`
+We are going to be creating something similar to the above example. Instead we will be writing a spec for creating a new ruby class of `Dog`.
 
 ### Set-up
 
-Make a new directory `dog`, `cd` into it and `touch` a `Gemfile`.
+Make a new directory in your GA working folder called `dog`, `cd` into it and `touch` a `Gemfile`.
 
 #### Install RSpec
 
@@ -204,7 +204,7 @@ Enter the command `rspec --init`. What just happened?
 * an `.rspec` file was created, where one can specify options on how the tests are displayed
 * a `spec/spec_helper.rb` is created, which ensures the tests are run with the correct requirements and configurations
 
-Inside the `spec` directory and add a file called `dog_spec.rb`. Additionally, create a `models` directory and a file inside it, `dog.rb`, where we will define our class `Dog`.
+Inside the `spec` directory, add a file called `dog_spec.rb`. Additionally, create a `models` directory and a file inside it, `dog.rb`, where we will define our class `Dog`.
 
 >Note: Within `.rspec` file add `--color` OR in `spec/spec_helper.rb` add `config.color = true` to see colorful tests!
 
@@ -221,7 +221,7 @@ describe Dog do
 end
 ```
 
-We will specing-out or `describe` our `Dog`. A `describe` block is commonly used to split up a set of tests into sections about a certain set of tests will be focused on.
+We will spec-out or `describe` our `Dog`. A `describe` block is commonly used to split up a set of tests into sections with a specific focus.
 
 Now let's run `rspec`. What happened? Does the file it's require exist?
 
@@ -233,7 +233,7 @@ Make the file and run the tests again. What happens this time? Does the constant
 Dog = Object.new
 ```
 
-Realistically we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation it is convention to prefix class methods with `::` and instance methods with `#`.
+Realistically we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
 
 **/spec/dog_spec.rb**
 
@@ -459,7 +459,7 @@ describe Dog do
       expect(dog.name).to eq("Fido")
     end
   end
-  describe "#name" do
+  describe "#hunger_level" do
     it "allows the reading and writing of a hunger level" do
       dog = Dog.new
       dog.hunger_level = 5
@@ -597,7 +597,7 @@ Constraints: Try to write everything as `describe`, `context`, and `it` blocks. 
 
 ## Garnet Example
 
-RSpec is used to test Garnet, the attendance/homework tracking app. Before any changes get pushed up to our live server, they have to pass all the tests -- an automated system rejects the changes if they don't pass.
+RSpec is used to test Garnet, a GA attendance/homework tracking app in some locations. Before any changes get pushed up to our live server, they have to pass all the tests -- an automated system rejects the changes if they don't pass.
 
 Here's what the [model tests](https://github.com/ga-dc/garnet/tree/master/spec/models) look like. Checkout a few of them... Seem familiar?
 
@@ -609,10 +609,10 @@ Here's what the [model tests](https://github.com/ga-dc/garnet/tree/master/spec/m
 
 ### Quiz Questions:
 
-- What is the purpose Unit testing?
+- What is the purpose of Unit testing?
 - Explain what role RSpec plays in testing.
 - What is `subject` useful for?
-- How does `describe` and `context` differ?
+- How do `describe` and `context` differ?
 
 ### Additional Resources
 - [Structure of RSpec Tests](http://jakegoulding.com/presentations/rspec-structure/)
