@@ -4,20 +4,20 @@
 
 ### Why is this important?
 
-Test Driven Development leads to better code. TDD is extremely helpful when implimenting software according to predefined specifications and expectations. Previously, we've run tests and passed them; now, we'll see how to write them.
+Test Driven Development leads to better code. TDD is extremely helpful when implementing software according to predefined specifications and expectations. Previously, we've run tests and passed them; now, we'll see how to write them.
 
 ### What are the objectives?
 *After this workshop, developers will be able to:*
 
-- Write unit tests using RSpec using `expectations` and `matchers`
-- Compare and contrast common RSpec terms including `describe`, `it`, and `context`
-- Refactor tests with `before`, `subject`, and `let`
+- **Write** unit tests using RSpec using `expectations` and `matchers`
+- **Compare** and **contrast** common RSpec terms including `describe`, `it`, and `context`
+- **Refactor** tests with `before`, `subject`, and `let`
 
 ### Where should we be now?
 *Before this workshop, developers should already be able to:*
 
-- Program in Ruby
-- Pass tests in a TDD manner
+- **Program** in Ruby
+- **Pass tests** in a TDD manner
 
 ## Do You Test?
 
@@ -53,11 +53,9 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 **Acceptance tests** verify our apps at the level of user interaction; testing for things when users take an action like visiting a page, clicking a links, loggin in, etc.
 
-  * A unit test focuses on an individual methods. Unit tests are intended to test modular blocks of code to ensure a specific input results in a specific output.
+  * A unit test focuses on an individual method. Unit tests are intended to test modular blocks of code to ensure a specific input results in a specific output.
 
   * Acceptance tests have a much wider focus. You'd use acceptance testing to make sure a sign-in form works, or that a user who doesn't have admin privileges can see this page, while a user who does have admin privileges can see that page.
-
-Unit testing always should come before acceptance testing.
 
 You'll see the term **test coverage** pop up pretty often. People are always aiming for "100% test coverage". If your app has 100% test coverage, that means every single method in your app has a unit test verifying that it works.
 
@@ -65,9 +63,9 @@ You'll see the term **test coverage** pop up pretty often. People are always aim
 
 **What are the reasons testing is so important? Why would employers love it so much?**
 
-We've asked you to write user stories. Writing unit tests is a very similar process. In fact, user
+We've asked you to write user stories. Writing acceptance tests is a very similar process. In fact, user stories are very often rewritten as acceptance tests that describe what the user _should_ see or _should_ be able to do.
 
-When we think of "testing" we tend to think of something you do *after* you've created something. With unit tests, you're encouraged to write the tests *first* before you even start writing actual code.
+When we think of "testing" we tend to think of something you do *after* you've created something, to make sure it works. With TDD, you're encouraged to write the tests *first* before you even start writing actual code.
 
 ## TDD Review
 
@@ -77,7 +75,7 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 * Fewer bugs in our code
 
-* Provides a clear goal in the development, that is, to make all tests to pass.
+* Provides a clear goal in the development, that is, to make all tests pass.
 
 * Allows for automation and continuous integration, ensuring that our application won’t break
 
@@ -173,11 +171,11 @@ end
 
 ## Creating a Unit Test using RSpec
 
-We are going to be creating something similar to the above example. Instead we will be writing a spec for creating a new ruby class of `Dog`
+We are going to be creating something similar to the above example. Instead we will be writing a spec for creating a new ruby class of `Dog`.
 
 ### Set-up
 
-Make a new directory `dog`, `cd` into it and `touch` a `Gemfile`.
+Make a new directory in your GA working folder called `dog`, `cd` into it and `touch` a `Gemfile`.
 
 #### Install RSpec
 
@@ -206,7 +204,7 @@ Enter the command `rspec --init`. What just happened?
 * an `.rspec` file was created, where one can specify options on how the tests are displayed
 * a `spec/spec_helper.rb` is created, which ensures the tests are run with the correct requirements and configurations
 
-Inside the `spec` directory and add a file called `dog_spec.rb`. Additionally, create a `models` directory and a file inside it, `dog.rb`, where we will define our class `Dog`.
+Inside the `spec` directory, add a file called `dog_spec.rb`. Additionally, create a `models` directory and a file inside it, `dog.rb`, where we will define our class `Dog`.
 
 >Note: Within `.rspec` file add `--color` OR in `spec/spec_helper.rb` add `config.color = true` to see colorful tests!
 
@@ -223,7 +221,7 @@ describe Dog do
 end
 ```
 
-We will specing-out or `describe` our `Dog`. A `describe` block is commonly used to split up a set of tests into sections about a certain set of tests will be focused on.
+We will spec-out or `describe` our `Dog`. A `describe` block is commonly used to split up a set of tests into sections with a specific focus.
 
 Now let's run `rspec`. What happened? Does the file it's require exist?
 
@@ -235,7 +233,7 @@ Make the file and run the tests again. What happens this time? Does the constant
 Dog = Object.new
 ```
 
-Realistically we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation it is convention to prefix class methods with `::` and instance methods with `#`.
+Realistically we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
 
 **/spec/dog_spec.rb**
 
@@ -461,7 +459,7 @@ describe Dog do
       expect(dog.name).to eq("Fido")
     end
   end
-  describe "#name" do
+  describe "#hunger_level" do
     it "allows the reading and writing of a hunger level" do
       dog = Dog.new
       dog.hunger_level = 5
@@ -599,22 +597,22 @@ Constraints: Try to write everything as `describe`, `context`, and `it` blocks. 
 
 ## Garnet Example
 
-RSpec is used to test Garnet, the attendance/homework tracking app. Before any changes get pushed up to our live server, they have to pass all the tests -- an automated system rejects the changes if they don't pass.
+RSpec is used to test Garnet, a GA attendance/homework tracking app in some locations. Before any changes get pushed up to our live server, they have to pass all the tests -- an automated system rejects the changes if they don't pass.
 
 Here's what the [model tests](https://github.com/ga-dc/garnet/tree/master/spec/models) look like. Checkout a few of them... Seem familiar?
 
 ## Challenge: Grand Prix Racing
 
- * Clone down [grand-prix-testing](https://github.com/sf-wdi-29/car-racing-lab) and follow the instructions.
+ * Clone down [grand-prix-testing](https://github.com/den-wdi-1/car-racing-lab) and follow the instructions.
 
 ## Closing
 
 ### Quiz Questions:
 
-- What is the purpose Unit testing?
+- What is the purpose of Unit testing?
 - Explain what role RSpec plays in testing.
 - What is `subject` useful for?
-- How does `describe` and `context` differ?
+- How do `describe` and `context` differ?
 
 ### Additional Resources
 - [Structure of RSpec Tests](http://jakegoulding.com/presentations/rspec-structure/)
