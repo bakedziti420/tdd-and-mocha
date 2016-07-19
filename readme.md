@@ -9,15 +9,15 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 ### What are the objectives?
 *After this workshop, developers will be able to:*
 
-- Write unit tests using RSpec using `expectations` and `matchers`
-- Compare and contrast common RSpec terms including `describe`, `it`, and `context`
-- Refactor tests with `before`, `subject`, and `let`
+- **Write** unit tests using RSpec using `expectations` and `matchers`
+- **Compare** and **contrast** common RSpec terms including `describe`, `it`, and `context`
+- **Refactor** tests with `before`, `subject`, and `let`
 
 ### Where should we be now?
 *Before this workshop, developers should already be able to:*
 
-- Program in Ruby
-- Pass tests in a TDD manner
+- **Program** in Ruby
+- **Pass tests** in a TDD manner
 
 ## Do You Test?
 
@@ -53,11 +53,9 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 **Acceptance tests** verify our apps at the level of user interaction; testing for things when users take an action like visiting a page, clicking a links, loggin in, etc.
 
-  * A unit test focuses on an individual methods. Unit tests are intended to test modular blocks of code to ensure a specific input results in a specific output.
+  * A unit test focuses on an individual method. Unit tests are intended to test modular blocks of code to ensure a specific input results in a specific output.
 
   * Acceptance tests have a much wider focus. You'd use acceptance testing to make sure a sign-in form works, or that a user who doesn't have admin privileges can see this page, while a user who does have admin privileges can see that page.
-
-Unit testing always should come before acceptance testing.
 
 You'll see the term **test coverage** pop up pretty often. People are always aiming for "100% test coverage". If your app has 100% test coverage, that means every single method in your app has a unit test verifying that it works.
 
@@ -65,9 +63,9 @@ You'll see the term **test coverage** pop up pretty often. People are always aim
 
 **What are the reasons testing is so important? Why would employers love it so much?**
 
-We've asked you to write user stories. Writing unit tests is a very similar process. In fact, user
+We've asked you to write user stories. Writing acceptance tests is a very similar process. In fact, user stories are very often rewritten as acceptance tests that describe what the user _should_ see or _should_ be able to do.
 
-When we think of "testing" we tend to think of something you do *after* you've created something. With unit tests, you're encouraged to write the tests *first* before you even start writing actual code.
+When we think of "testing" we tend to think of something you do *after* you've created something, to make sure it works. With TDD, you're encouraged to write the tests *first* before you even start writing actual code.
 
 ## TDD Review
 
@@ -77,7 +75,7 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 * Fewer bugs in our code
 
-* Provides a clear goal in the development, that is, to make all tests to pass.
+* Provides a clear goal in the development, that is, to make all tests pass.
 
 * Allows for automation and continuous integration, ensuring that our application won’t break
 
@@ -605,7 +603,7 @@ Here's what the [model tests](https://github.com/ga-dc/garnet/tree/master/spec/m
 
 ## Challenge: Grand Prix Racing
 
- * Clone down [grand-prix-testing](https://github.com/sf-wdi-29/car-racing-lab) and follow the instructions.
+ * Clone down [grand-prix-testing](https://github.com/den-wdi-1/car-racing-lab) and follow the instructions.
 
 ## Closing
 
