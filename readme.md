@@ -2,7 +2,7 @@
 
 <!-- 1:00 5 minutes -->
 
-<!--Hook: Has anyone here tried fixing a car or complicated appliance?  You get the piece back in place, or the wheel on straight.  Then what do you do?  (For me, back up and cross fingers that it works.)  The idea behind TDD is to gain a higher confidence that before we flip that switch, before we try to go 80 miles an hour on I-25, the app we are building does what the customer wants.  
+<!--Hook: Has anyone here tried fixing a car or complicated appliance?  After two hours, you get the piece back in place, or the wheel on straight.  Then what do you do?  (For me, back up and cross fingers that it works.)  The idea behind TDD is to gain a higher confidence that before we flip that switch, before we try to go 80 miles an hour on I-25, the app we are building does what the customer wants.  
 
 Whether you like it or not, you will have to test your software somehow before you get it to your users.  Today, we'll talk about how to do that *with software itself*.  Woo-hoo, using software to test software!  -->
 
@@ -27,7 +27,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 - **Program** in Ruby
 - **Pass tests** in a TDD manner
 
-<!--9:05 5 minutes -->
+<!--1:05 5 minutes -->
 
 ## Do You Test?
 
@@ -57,13 +57,15 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 </details>
 
-<!-- 9:10 10 minutes -->
+<!-- 1:10 10 minutes -->
 
 ## Unit vs Acceptance Tests
 
+<!--Ask students to read each paragraph -->
+
 **Unit tests** check the smallest level; the functionality of a specific method (what we'll be discussing mostly today).
 
-**Acceptance tests** verify our apps at the level of user interaction; testing for things when users take an action like visiting a page, clicking a links, loggin in, etc.
+**Acceptance tests** verify our apps at the level of user interaction; testing for things when users take an action like visiting a page, clicking a link, logging in, etc.
 
   * A unit test focuses on an individual method. Unit tests are intended to test modular blocks of code to ensure a specific input results in a specific output.
 
@@ -81,10 +83,12 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 <!-- Catch-phrase with Unit Tests, Acceptance Tests, TDD, Code Coverage -->
 
-<!-- 9:20 5 minutes -->
+<!-- 1:20 5 minutes -->
 ## TDD Review
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
+
+<!-- Student reading benefit, another for drawbacks -->
 
 **Benefits**
 
@@ -110,7 +114,7 @@ RSpec makes it easier to write tests. Essentially it's a Domain Specific Languag
 
 > A DSL, "Domain Specific Language", is created specifically to solve problems in a particular domain and is not intended to be able to solve problems outside of it. Other DSLs include HTML or SQL. This is opposed to domain independent languages like Java, C++, Ruby, Python, PHP, JavaScript, Clojure, Rust, Scala, Erlang etc that are Turing complete (can solve any possible computation problem).
 
-<!-- 9:25 10 minutes -->
+<!-- 1:25 10 minutes -->
 
 ## RSpec Example
 
@@ -138,6 +142,8 @@ rspec_person_example/
 We have a Person model and a Person spec (a specification or test). This is the typical RSpec convention.  Specs live under the spec directory and echo the models in our system with the `_spec` suffix.
 
 Let's look further into `person_spec.rb`
+
+<!--Talk through first one, then give devs a minute to discuss with neighbor what the rest of them do, come back and share -->
 
 ```ruby
 # This first line is a reference to our library code.  We need to access to the classes we have written in Ruby to write our tests!
@@ -186,7 +192,7 @@ end
 
 >What does `expect(matt).to be_an_instance_of(Person)` mean in regular English?
 
-<!-- 9:35 25 minutes -->
+<!-- 1:35 25 minutes -->
 
 <!-- Half Mast -->
 
@@ -254,11 +260,11 @@ Make the file and run the tests again. What happens this time? Does the constant
 Dog = Object.new
 ```
 
-<!-- End half-mast -->
+<!-- End half-mast, devs catch up -->
 
 <!-- Half-mast again -->
 
-Realistically we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
+Realistically, we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
 
 **/spec/dog_spec.rb**
 
@@ -280,7 +286,7 @@ describe Dog do
 end
 ```
 
-What is is the output now? We should get `1 example, 0 failures, 1 pending`, saying that our specification is not yet implimented.
+What is is the output now? We should get `1 example, 0 failures, 1 pending`, saying that our specification is not yet implemented.
 
 Now add `do` at the end of the first `it` line.
 
@@ -341,7 +347,7 @@ describe Dog do
 end
 ```
 
-<!-- 10:00 15 minutes -->
+<!-- 2:00 15 minutes -->
 
 <!-- End half-mast -->
 
@@ -351,7 +357,7 @@ end
 
 <!-- Half-mast -->
 
-Add an expectation to the dog that, "allows the reading and writing of a hunger level". When complete, ensure the tests are writing correctly by watching them fail. Finally implement the code that passes the new expectation.
+Add an expectation to the dog that, "allows the reading and writing of a hunger level". When complete, ensure the tests are written correctly by watching them fail. Finally implement the code that passes the new expectation.
 
 <details><summary>Example solution</summary>
 
