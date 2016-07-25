@@ -371,10 +371,10 @@ Add an expectation to the dog that, "allows the reading and writing of a hunger 
 describe Dog do
   #...
   describe "#name" do
-    it "allows the reading and writing of a hunger level" do
+    it "allows the reading and writing of a name" do
       dog = Dog.new
-      dog.hunger_level = 5
-      expect(dog.hunger_level).to eq(5)
+      dog.name = "Fido"
+      expect(dog.name).to eq("Fido")
     end
   end
 end
