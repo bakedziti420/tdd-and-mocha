@@ -621,15 +621,7 @@ Goal: When all the tests pass, that means the robot works. However, you're only 
 
 Constraints: Try to write everything as `describe`, `context`, and `it` blocks. Method names should start with `#`.
 
-<!-- 2:55 5 minutes -->
-
-## Garnet Example
-
-RSpec is used to test Garnet, a GA attendance/homework tracking app in some locations. Before any changes get pushed up to our live server, they have to pass all the tests -- an automated system rejects the changes if they don't pass.
-
-Here's what the [model tests](https://github.com/ga-dc/garnet/tree/master/spec/models) look like. Checkout a few of them... Seem familiar?
-
-<!-- 3:00 40 minutes -->
+<!-- 2:55 45 minutes -->
 
 ## Challenge: Grand Prix Racing
 
