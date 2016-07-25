@@ -1,5 +1,3 @@
-![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
-
 <!-- 1:00 5 minutes -->
 
 <!--Hook: Has anyone here tried fixing a car or complicated appliance?  After two hours, you get the piece back in place, or the wheel on straight.  Then what do you do?  (For me, back up and cross fingers that it works.)  The idea behind TDD is to gain a higher confidence that before we flip that switch, before we try to go 80 miles an hour on I-25, the app we are building does what the customer wants.  
@@ -9,6 +7,8 @@ Whether you like it or not, you will have to test your software somehow before y
 ![](resources/xzibit_testing_software.jpg)
 
 # Testing with RSpec
+
+![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
 ### Why is this important?
 
@@ -43,6 +43,8 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 * For those of you who are positive to testing, why? What problems did it solve?
 
 <details><summary>Some possible responses...</summary>
+
+<!--Ask one student to read Cons, one to read Pros, add any they think are missing -->
 
 * Cons
  * **Time.** It's a waste of my time and effort to test.
@@ -198,7 +200,7 @@ end
 
 ## Creating a Unit Test using RSpec
 
-We are going to be creating something similar to the above example. Instead we will be writing a spec for creating a new ruby class of `Dog`.
+We are going to be creating something similar to the above example. However, we will be writing a spec for creating a new ruby class of `Dog`.
 
 ### Set-up
 
@@ -250,7 +252,9 @@ end
 
 We will spec-out or `describe` our `Dog`. A `describe` block is commonly used to split up a set of tests into sections with a specific focus.
 
-Now let's run `rspec`. What happened? Does the file it's require exist?
+Now let's run `rspec`. What happened?
+
+Does the file it's requiring exist?
 
 Make the file and run the tests again. What happens this time? Does the constant `Dog` exist? Let's give it just enough code to satisfy the current (minimal) specifications.
 
@@ -264,7 +268,7 @@ Dog = Object.new
 
 <!-- Half-mast again -->
 
-Realistically, we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing it's `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
+Realistically, we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing its `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
 
 **/spec/dog_spec.rb**
 
@@ -323,7 +327,7 @@ We use the pattern `expect(IUT)` to "wrap" the ***Item Under Test***, so that it
 
 [RSpec documentation Built in Matchers](https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers)
 
-<!-- End half-mast -->
+<!-- End half-mast, stress "pending", "failing", "passing" order -->
 
 >What is the minimal amount of code we can write in `models/dog.rb` to pass our current expectation?
 
@@ -412,10 +416,9 @@ Write the code that passes the above specifications.
 
 <!-- Half-mast -->
 
-Image we want the eat method to behave differently in different contexts. For example if the dog is not hungry and has a `hunger_level` of `0`, we don't want the eat method to continue decrementing. In order to setup different scenarios or contexts in our specifications, we can use the `context` keyword. Generally, context blocks are a *"nice to have"* in testing and improve **organization** and **readability**.
+Imagine we want the eat method to behave differently in different contexts. For example if the dog is not hungry and has a `hunger_level` of `0`, we don't want the eat method to continue decrementing. In order to set up different scenarios or contexts in our specifications, we can use the `context` keyword. Generally, context blocks are a *"nice to have"* in testing and improve **organization** and **readability**.
 
 Use `describe` for "things" and `context` for "states.
-
 
 **/spec/dog_spec.rb**
 
@@ -454,6 +457,8 @@ Write the code to pass the above specs!
 ##Refactoring
 
 Do you see any opportunities to refactor? Identify them...
+
+<!-- Give devs a minute to see repeated or poorly-organized code -->
 
 ```ruby
 describe Dog do
@@ -499,6 +504,8 @@ end
 ```
 
 How many times are we writing `dog = Dog.new`? It seems we'll have to do that at the beginning of most specifications.
+
+<!--Half-mast -->
 
 ###Subject Blocks
 
@@ -546,9 +553,13 @@ describe Dog do
 end
 ```
 
+<!-- End half-mast -->
+
 ###Before Blocks
 
 We can further refactor the above code with a `before` block in order to setup the state of our dog by calling a few methods on it.
+
+<!-- Half-mast -->
 
 ```ruby
 describe Dog do
@@ -589,6 +600,8 @@ describe Dog do
   end
 end
 ```
+
+<!-- End half-mast -->
 
 >Note: you can pass different options to before.
 >
