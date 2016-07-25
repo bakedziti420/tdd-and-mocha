@@ -4,11 +4,11 @@
 
 Whether you like it or not, you will have to test your software somehow before you get it to your users.  Today, we'll talk about how to do that *with software itself*.  Woo-hoo, using software to test software!  -->
 
-![](resources/xzibit_testing_software.jpg)
-
 # Testing with RSpec
 
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+
+![](resources/xzibit_testing_software.jpg)
 
 ### Why is this important?
 
