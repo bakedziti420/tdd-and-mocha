@@ -1,4 +1,4 @@
-<!-- 1:00 5 minutes -->
+<!-- 1:30 5 minutes -->
 
 <!--Hook: Has anyone here tried fixing a car or complicated appliance?  After two hours, you get the piece back in place, or the wheel on straight.  Then what do you do?  (For me, back up and cross fingers that it works.)  The idea behind TDD is to gain a higher confidence that before we flip that switch, before we try to go 80 miles an hour on I-25, the app we are building does what the customer wants.  
 
@@ -17,27 +17,27 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 ### What are the objectives?
 *After this workshop, developers will be able to:*
 
-- **Write** unit tests using RSpec using `expectations` and `matchers`
-- **Compare** and **contrast** common RSpec terms including `describe`, `it`, and `context`
-- **Refactor** tests with `before`, `subject`, and `let`
+- **Write** unit tests using Mocha and Chai `expectations` and `matchers`
+- **Define** common Mocha terms including `describe`, `context`, and `it`
+- **Refactor** tests with `before` and `beforeEach`
 
 ### Where should we be now?
 *Before this workshop, developers should already be able to:*
 
-- **Program** in Ruby
+- **Program** in Javascript
 - **Pass tests** in a TDD manner
 
-<!--1:05 5 minutes -->
+<!--1:35 5 minutes -->
 
 ## Do You Test?
 
-####Place yourselves somewhere in the following ranges:
+#### Place yourselves somewhere in the following ranges:
 
 * I have used TDD **or** I have never used TDD
 
 * I love the idea of TDD **or** I hate the idea of TDD
 
-####Thoughts:
+#### Thoughts:
 
 * For those of you who are negative to testing, why? What did you or would you do instead?
 * For those of you who are positive to testing, why? What problems did it solve?
@@ -59,7 +59,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 </details>
 
-<!-- 1:10 10 minutes -->
+<!-- 1:40 10 minutes -->
 
 ## Unit vs Acceptance Tests
 
@@ -85,7 +85,7 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 <!-- Catch-phrase with Unit Tests, Acceptance Tests, TDD, Code Coverage -->
 
-<!-- 1:20 5 minutes -->
+<!-- 1:50 5 minutes -->
 ## TDD Review
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
@@ -108,151 +108,140 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 * Could be more costly to an organization when there are changes in requirements.
 
-## What is RSpec?
+<!--1:55 10 minutes -->
 
-**RSpec** is a testing framework for the Ruby programming language.
+## What is Mocha?
 
-RSpec makes it easier to write tests. Essentially it's a Domain Specific Language for writing live specifications about your code.  It was released on May 18, 2007, so it's been around for a while.
+**Mocha** is a testing framework for the Javascript programming language.
+
+Mocha makes it easier to write tests. Essentially it's a Domain Specific Language for writing live specifications about your code.
 
 > A DSL, "Domain Specific Language", is created specifically to solve problems in a particular domain and is not intended to be able to solve problems outside of it. Other DSLs include HTML or SQL. This is opposed to domain independent languages like Java, C++, Ruby, Python, PHP, JavaScript, Clojure, Rust, Scala, Erlang etc that are Turing complete (can solve any possible computation problem).
 
-<!-- 1:25 10 minutes -->
-
-## RSpec Example
+## Mocha Example
 
 Code is available here: [example-tests](./example-tests)
 
-When `rspec` is run in the `example-tests` directory, what does it show?
+When `mocha` is run in the `example-tests` directory, what does it show?
 
 ```
-Finished in 0.00565 seconds (files took 0.14281 seconds to load)
-5 examples, 0 failures
+  Person
+    Constructor
+object
+      ✓ should create a new object
+      ✓ should have a name
+      ✓ should default <language> to 'English'
+    greeting
+      for default language (English)
+        ✓ should offer a greeting in English
+      when language is 'Italian'
+        ✓ should offer a greeting in Italian
+
+
+  5 passing (12ms)
 ```
-Let's review `spec/person_spec.rb`.  This is the specification for a Person.  It indicates how we can expect a Person to function.
+Let's review `test/person_spec.js`.  This is the specification for a Person.  It indicates how we can expect a Person to function.
 
 ```
-rspec_person_example/
+example-tests/
 ├── models
-│   └── person.rb
-└── spec
-    ├── person_spec.rb
-    └── spec_helper.rb
+│   └── person.js
+└── test
+    └── person_spec.js
 
 2 directories, 3 files
 ```
 
-We have a Person model and a Person spec (a specification or test). This is the typical RSpec convention.  Specs live under the spec directory and echo the models in our system with the `_spec` suffix.
+We have a Person model and a Person spec (a specification or test). This is the typical Mocha convention.  Specs live under the test directory and echo the models in our system with the `_spec` suffix.
 
-Let's look further into `person_spec.rb`
+Let's look further into `person_spec.js`
 
 <!--Talk through first one, then give devs a minute to discuss with neighbor what the rest of them do, come back and share -->
 
-```ruby
-# This first line is a reference to our library code.  We need to access to the classes we have written in Ruby to write our tests!
+```javascript
+var Person = require('../models/person');  // a reference to our model
+var expect = require('chai').expect; // requiring the `expect` command
 
-require_relative '../models/person'  # a reference to our code
+describe("Person", function() {
+  describe("Constructor", function() {
+    var matt = new Person("Matt");
+    it("should create a new object", function() {   
+      expect(typeof(matt)).to.equal("object");
+    });
+    
+    it("should have a name", function() {
+      expect(matt.name).to.not.be.empty;
+    });
 
-describe Person do
-  describe "Constructor" do
-    subject(:matt) { Person.new("Matt") }
+    it("should default <language> to 'English'", function() {
+      expect(matt.language).to.equal("English");
+    });
+  });
 
-    it "should create a new instance of class Person" do
-      expect(matt).to be_an_instance_of(Person)
-    end
+  describe("greeting", function() {
+    context("for default language (English)", function() {
+      var bob = new Person("Bob");
+      it("should offer a greeting in English", function() {
+        expect(bob.greeting()).to.equal("Hello, my name is Bob.");
+      })
+    });
+    context("when language is 'Italian'", function() {
+      var tony = new Person("Tony", "Italian");
+      it("should offer a greeting in Italian", function() {
+        expect(tony.greeting()).to.equal("Ciao, mi chiamo Tony.");
+      });
+    })
+  })
+});
 
-    it "should have a name" do
-      expect(matt.name).to_not be_nil
-    end
-
-    it "should default #language to 'English'" do
-      expect(matt.language).to eq("English")
-    end
-  end
-
-  describe "#greeting" do
-    context "for default language (English)" do
-      subject(:bob) { Person.new("Bob") }
-
-      it "should offer a greeting in English" do
-        expect(bob.greeting).to eql("Hello, my name is Bob.")
-      end
-    end
-
-    context "when language is 'Italian'" do
-      subject(:tony) { Person.new("Tony", "Italian") }
-
-      it "should offer a greeting in Italian" do
-        # legacy syntax - the old DSL
-        tony.greeting.should eql("Ciao, mi chiamo Tony.")
-        # equivalent to:
-        # expect(tony.greeting).to eql("Ciao, mi chiamo Tony.")
-      end
-    end
-  end
-end
 ```
 
->What does `expect(matt).to be_an_instance_of(Person)` mean in regular English?
+>What does `expect(typeof(matt)).to.equal("object");` mean in regular English?
 
-<!-- 1:35 25 minutes -->
+<!-- 2:05 25 minutes -->
 
 <!-- Half Mast -->
 
-## Creating a Unit Test using RSpec
+## Creating a Unit Test using Mocha
 
-We are going to be creating something similar to the above example. However, we will be writing a spec for creating a new ruby class of `Dog`.
+We are going to be creating something similar to the above example. However, we will be writing a spec for creating a new Javascript constructor for `Dog`.
 
 ### Set-up
 
-Make a new directory in your GA working folder called `dog`, `cd` into it and `touch` a `Gemfile`.
+Make a new directory in your GA working folder called `dog`, `cd` into it and `npm init -y`.
 
-#### Install RSpec
+#### Install Mocha
 
-The first thing we'll do is install a gem called RSpec. To do this, just add `gem 'rspec'` to the `Gemfile`:
-
-```rb
-source "https://rubygems.org"
-
-gem 'rspec'
-```
-
-Then, in your Terminal:
+The first thing we'll do is install two packages called `mocha` and `chai`. To do this, just type the following command in your `dog` folder:
 
 ```sh
-$ bundle install
-$ rspec
+npm install --save-dev mocha chai
 ```
 
->After running `rspec`, you should get a message saying "No examples found." When it says "examples", it means "tests". It's saying, "You haven't written any tests for me to run!"
+>After running `mocha`, you should get a message saying `Error: cannot resolve path (or pattern) 'test'`. It's saying, "You haven't written any tests for me to run!"
 
 #### Set up the directory
 
-Enter the command `rspec --init`. What just happened?
+Make a `test` directory.
 
-* a `spec` directory was created, where the tests will live
-* an `.rspec` file was created, where one can specify options on how the tests are displayed
-* a `spec/spec_helper.rb` is created, which ensures the tests are run with the correct requirements and configurations
-
-Inside the `spec` directory, add a file called `dog_spec.rb`. Additionally, create a `models` directory and a file inside it, `dog.rb`, where we will define our class `Dog`.
-
->Note: Within `.rspec` file add `--color` OR in `spec/spec_helper.rb` add `config.color = true` to see colorful tests!
+Inside the `test` directory, add a file called `dog_spec.js`. Additionally, create a `models` directory and a file inside it, `dog.js`, where we will define our class `Dog`.
 
 ### Writing our Specification
 
-Let's start defining the design of our program with certain specifications. Let's spec out our `Dog` with some psuedocode.
+Let's start defining the design of our program with certain specifications. Let's spec out our `Dog` with some psuedocode. That's right, we're writing our tests first!
 
-**/spec/dog_spec.rb**
+**/spec/dog_spec.js**
 
-```rb
-require_relative "../models/dog"
-describe Dog do
+```javascript
+var Dog = require("../models/dog");
+describe("Dog", function() {
 
-end
+});
 ```
 
 We will spec-out or `describe` our `Dog`. A `describe` block is commonly used to split up a set of tests into sections with a specific focus.
 
-Now let's run `rspec`. What happened?
+Now let's run `mocha`. What happened?
 
 Does the file it's requiring exist?
 
@@ -454,7 +443,7 @@ Write the code to pass the above specs!
 
 <!-- 2:30 10 minutes -->
 
-##Refactoring
+## Refactoring
 
 Do you see any opportunities to refactor? Identify them...
 
@@ -507,7 +496,7 @@ How many times are we writing `dog = Dog.new`? It seems we'll have to do that at
 
 <!--Half-mast -->
 
-###Subject Blocks
+### Subject Blocks
 
 We could use `before`, `let`, or `subject` to help us refactor these specifications. Let's prefer using `subject` as the dog is the subject, or thing we are testing. `let` is similar, but may be used when one wants to set up a variable that isn't necessarily the subject, for example it could be the food the dog is eating. Whereas `let` and `subject` are used to setup "dependencies", `before` which is best used to setup an action in advance, such as opening a connection with a database.
 
@@ -555,7 +544,7 @@ end
 
 <!-- End half-mast -->
 
-###Before Blocks
+### Before Blocks
 
 We can further refactor the above code with a `before` block in order to setup the state of our dog by calling a few methods on it.
 
@@ -619,15 +608,9 @@ Split up into groups of 3 or 4. For 15 minutes, on a whiteboard, work with your 
 
 Goal: When all the tests pass, that means the robot works. However, you're only writing **pending** tests -- don't actually write the code that would make the tests pass.
 
-Constraints: Try to write everything as `describe`, `context`, and `it` blocks. Method names should start with `#`.
+Constraints: Try to write everything as `describe`, `context`, and `it` blocks.
 
-<!-- 2:55 45 minutes -->
-
-## Challenge: Grand Prix Racing
-
- * Clone down [grand-prix-testing](https://github.com/den-wdi-1/car-racing-lab) and follow the instructions.
-
-<!--3:40 5 minutes -->
+<!--2:45 5 minutes -->
 
 ## Closing
 
