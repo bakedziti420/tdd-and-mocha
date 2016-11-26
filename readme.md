@@ -85,30 +85,11 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 <!-- Catch-phrase with Unit Tests, Acceptance Tests, TDD, Code Coverage -->
 
-<!-- 1:50 5 minutes -->
 ## TDD Review
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
 
-<!-- Student reading benefit, another for drawbacks -->
-
-**Benefits**
-
-* Fewer bugs in our code
-
-* Provides a clear goal in the development, that is, to make all tests pass.
-
-* Allows for automation and continuous integration, ensuring that our application won’t break
-
-* A little more time upfront means a lot of time saved down the line! (Think about refactoring)
-
-**DrawBacks**
-
-* Requires time and effort.
-
-* Could be more costly to an organization when there are changes in requirements.
-
-<!--1:55 10 minutes -->
+<!--1:50 10 minutes -->
 
 ## What is Mocha?
 
@@ -198,7 +179,7 @@ describe("Person", function() {
 
 >What does `expect(typeof(matt)).to.equal("object");` mean in regular English?
 
-<!-- 2:05 20 minutes -->
+<!-- 2:00 25 minutes -->
 
 <!-- Half Mast -->
 
