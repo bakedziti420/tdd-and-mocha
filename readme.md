@@ -4,7 +4,7 @@
 
 Whether you like it or not, you will have to test your software somehow before you get it to your users.  Today, we'll talk about how to do that *with software itself*.  Woo-hoo, using software to test software!  -->
 
-# Testing with RSpec
+# Testing with Mocha
 
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
@@ -19,7 +19,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 - **Write** unit tests using Mocha and Chai `expectations` and `matchers`
 - **Define** common Mocha terms including `describe`, `context`, and `it`
-- **Refactor** tests with `before` and `beforeEach`
+- **Refactor** tests with `before`
 
 ### Where should we be now?
 *Before this workshop, developers should already be able to:*
@@ -198,7 +198,7 @@ describe("Person", function() {
 
 >What does `expect(typeof(matt)).to.equal("object");` mean in regular English?
 
-<!-- 2:05 25 minutes -->
+<!-- 2:05 20 minutes -->
 
 <!-- Half Mast -->
 
@@ -234,6 +234,8 @@ Let's start defining the design of our program with certain specifications. Let'
 
 ```javascript
 var Dog = require("../models/dog");
+var expect = require("chai").expect;
+
 describe("Dog", function() {
 
 });
@@ -245,131 +247,124 @@ Now let's run `mocha`. What happened?
 
 Does the file it's requiring exist?
 
-Make the file and run the tests again. What happens this time? Does the constant `Dog` exist? Let's give it just enough code to satisfy the current (minimal) specifications.
-
-**/models/dog.rb**
-
-```ruby
-Dog = Object.new
-```
+Make the file and run the tests again. What happens this time?
 
 <!-- End half-mast, devs catch up -->
 
-<!-- Half-mast again -->
+**/spec/dog_spec.js**
 
-Realistically, we'll want our `Dog` constant to be class that creates new dogs. So let's start specing it out. We'll first want to start describing its `.new` method. Remember, in Ruby documentation, it is convention to prefix class methods with `::` and instance methods with `#`.
+```javascript
+var Dog = require("../models/dog");
+var expect = require("chai").expect;
 
-**/spec/dog_spec.rb**
-
-```ruby 
-describe Dog do
-  describe "::new" do
-    # specs to come
-  end
-end
+describe("Dog", function() {
+ describe("new", function() {
+  
+ });
+});
 ```
 
-Now we can start writing out some specifications related to the `new` method using and `it` block
+Now we can start writing out some specifications related to the `new` method using an `it` block.
 
-```ruby 
-describe Dog do
-  describe "::new" do
-    it "initializes a new dog"
-  end
-end
+```javascript
+var Dog = require("../models/dog");
+var expect = require("chai").expect;
+
+describe("Dog", function() {
+ describe("new", function() {
+  it("initializes a new dog");
+ });
+});
 ```
 
-What is is the output now? We should get `1 example, 0 failures, 1 pending`, saying that our specification is not yet implemented.
+What is is the output now? We should get something like `0 passing (6ms) 1 pending`, saying that our specification is not yet implemented.
 
-Now add `do` at the end of the first `it` line.
+Now add a callback function to the first `it` line.
 
-```ruby 
-describe Dog do
-  describe "::new" do
-    it "initializes a new dog" do
-      #specs to come...
-    end
-  end
-end
+```javascript
+var Dog = require("../models/dog");
+var expect = require("chai").expect;
+
+describe("Dog", function() {
+ describe("new", function() {
+  it("initializes a new dog", function() {
+  
+  });
+ });
+});
 ```
 
->Run `rspec` again. Our tests passed because RSpec will evaluate a test as passing as long as no errors are thrown.
+>Run `mocha` again. Our tests passed because Mocha will evaluate a test as passing as long as no errors are thrown.
 
 Let's make our specs actually test something.
 
-```ruby 
-describe Dog do
-  describe "::new" do
-    it "initializes a new dog" do
-      dog = Dog.new
-      expect(dog).to be_a(Dog)
-    end
-  end
-end
+```javascript
+var Dog = require("../models/dog");
+var expect = require("chai").expect;
+
+describe("Dog", function() {
+ describe("new", function() {
+  it("initializes a new dog", function() {
+      var fido = new Dog();
+      expect(typeof(fido)).to.equal("object");
+  });
+ });
+});
 ```
 
-> Expectation: `expect(dog).to` 
+> Expectation: `expect(typeof(fido)).to` 
 
-> Matcher: `be_a(Dog)`
+> Matcher: `be.equal("object")`
 
-We use the pattern `expect(IUT)` to "wrap" the ***Item Under Test***, so that it supports the `to` method which accepts a matcher. Here we are wrapping an object or block in expect, call to or to_not (aliased as not_to) and pass it a matcher object
+We use the pattern `expect(IUT)` to "wrap" the ***Item Under Test***, so that it supports the `to` method which then runs an assertion like `equal` or `empty`.
 
-[RSpec documentation Built in Matchers](https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers)
+[Mocha Expect Assertion Reference](http://chaijs.com/api/bdd/)
+
+Does the function `Dog` exist? Let's give it just enough code to satisfy the current (minimal) specifications.
+
+**/models/dog.js**
+
+```javascript
+function Dog() {
+
+}
+
+module.exports = Dog;
+```
 
 <!-- End half-mast, stress "pending", "failing", "passing" order -->
 
->What is the minimal amount of code we can write in `models/dog.rb` to pass our current expectation?
+<!-- Half-mast again -->
 
-##More expectations!
+## More expectations!
 
-<!-- Half-mast -->
-###Naming your Dog
+### Naming your Dog
 
-Let's give our dog instances the method to get and set an attribute `name`. As usual, let's first start with the specfication.
+Let's give our dogs a `name` when we create one. As usual, let's first start with the specfication.
 
-```ruby
-describe Dog do
-  #...
-  describe "#name" do
-    it "allows the reading and writing of a name" do
-      dog = Dog.new
-      dog.name = "Fido"
-      expect(dog.name).to eq("Fido")
-    end
-  end
-end
+```javascript
+describe("Dog", function() {
+  ...
+  describe("name", function() {
+    it("allows the reading and writing of a name", function() {
+      var fido = new Dog("Fido");
+      expect(fido.name).to.equal("Fido");
+    });
+  });
+});
 ```
-
-<!-- 2:00 15 minutes -->
 
 <!-- End half-mast -->
 
 >What is the minimal code one could write to pass these specifications?
 
+<!-- 2:25 10 minutes -->
+
 ### Challenge: Hungry Dog
 
 <!-- Half-mast -->
 
-Add an expectation to the dog that, "allows the reading and writing of a hunger level". When complete, ensure the tests are written correctly by watching them fail. Finally implement the code that passes the new expectation.
-
-<details><summary>Example solution</summary>
-
-**/spec/dog_spec.rb**
-
-```ruby
-describe Dog do
-  #...
-  describe "#name" do
-    it "allows the reading and writing of a name" do
-      dog = Dog.new
-      dog.name = "Fido"
-      expect(dog.name).to eq("Fido")
-    end
-  end
-end
-```
-
-</details>
+Add an expectation to the dog that "allows the reading and writing of a hunger level". When complete, ensure the tests are written correctly by watching them fail. Finally implement the code that passes the new expectation.
 
 <!-- End half-mast -->
 
@@ -377,31 +372,31 @@ end
 
 <!-- Half-mast -->
 
-Let's implement a method `eat` which decrements a dog's hunger level when invoked. How would we translate this specification in RSpec tests?
+Let's implement a method `eat` which decrements a dog's hunger level when invoked. How would we translate this specification in Mocha tests?
 
 **/spec/dog_spec.rb**
 
-```ruby
-describe Dog do
-  #...
-  describe "#eat" do
-    it "decrements the hunger level when invoked" do
-      dog = Dog.new
-      dog.hunger_level = 5
-      dog.eat
-      expect(dog.hunger_level).to eq(4)
-    end
-  end
-end
+```javascript
+describe("Dog", function() {
+  ...
+  describe("eat", function() {
+    it("decrements the hunger level when invoked", function() {
+      var fido = new Dog("Fido");
+      fido.hungerLevel = 5;
+      fido.eat();
+      expect(fido.hungerLevel).to.equal(4);
+    });
+  });
+});
 ```
 
 <!-- End half-mast -->
 
-###Challenge: Teach the Dog to Eat
+### Challenge: Teach the Dog to Eat
 
 Write the code that passes the above specifications.
 
-###Context
+### Context
 
 <!-- Half-mast -->
 
@@ -411,37 +406,37 @@ Use `describe` for "things" and `context` for "states.
 
 **/spec/dog_spec.rb**
 
-```ruby
-describe Dog do
-  #...
-  describe "#eat" do
-    context "when the dog is hungry" do
-      it "decrements the hunger level when invoked" do
-        dog = Dog.new
-        dog.hunger_level = 5
-        dog.eat
-        expect(dog.hunger_level).to eq(4)
-      end
-    end
-    context "when the dog is full" do
-      it "doesn't decrement the hunger level when invoked" do
-        dog = Dog.new
-        dog.hunger_level = 0
-        dog.eat
-        expect(dog.hunger_level).to eq(0)
-      end
-    end
-  end
-end
+```javascript
+describe("Dog", function() {
+  ...
+  describe("eat", function() {
+    context("when dog is hungry", function() {
+      it("decrements the hunger level when invoked", function() {
+        var fido = new Dog("Fido");
+        fido.hungerLevel = 5;
+        fido.eat();
+        expect(fido.hungerLevel).to.equal(4);
+      });
+    });
+    context("when dog is NOT hungry", function() {
+      it("does NOT decrement the hunger level when invoked", function() {
+        var fido = new Dog("Fido");
+        fido.hungerLevel = 0;
+        fido.eat();
+        expect(fido.hungerLevel).to.equal(0);
+      });
+    });    
+  });
+});
 ```
 
 <!-- End half-mast -->
 
-###Challenge: Don't Over Eat
+### Challenge: Don't Over Eat
 
 Write the code to pass the above specs!
 
-<!-- 2:30 10 minutes -->
+<!-- 2:35 10 minutes -->
 
 ## Refactoring
 
@@ -449,156 +444,103 @@ Do you see any opportunities to refactor? Identify them...
 
 <!-- Give devs a minute to see repeated or poorly-organized code -->
 
-```ruby
-describe Dog do
-  describe "::new" do
-    it "initializes a new dog" do
-      dog = Dog.new
-      expect(dog).to be_a(Dog)
-    end
-  end
-  describe "#name" do
-    it "allows the reading and writing of a name" do
-      dog = Dog.new
-      dog.name = "Fido"
-      expect(dog.name).to eq("Fido")
-    end
-  end
-  describe "#hunger_level" do
-    it "allows the reading and writing of a hunger level" do
-      dog = Dog.new
-      dog.hunger_level = 5
-      expect(dog.hunger_level).to eq(5)
-    end
-  end
-  describe "#eat" do
-    context "when the dog is hungry" do
-      it "decrements the hunger level when invoked" do
-        dog = Dog.new
-        dog.hunger_level = 5
-        dog.eat
-        expect(dog.hunger_level).to eq(4)
-      end
-    end
-    context "when the dog is full" do
-      it "doesn't decrement the hunger level when invoked" do
-        dog = Dog.new
-        dog.hunger_level = 0
-        dog.eat
-        expect(dog.hunger_level).to eq(0)
-      end
-    end
-  end
-end
+```javascript
+var Dog = require("../models/dog");
+var expect = require("chai").expect;
+
+describe("Dog", function() {
+ describe("new", function() {
+  it("initializes a new dog", function() {
+    var fido = new Dog();
+    expect(typeof(fido)).to.equal("object");
+  });
+  describe("name", function(){
+    it("allows the reading and writing of a name", function() {
+      var fido = new Dog("Fido");
+      expect(fido.name).to.equal("Fido");
+    });
+  }); 
+  describe("eat", function() {
+    context("when dog is hungry", function() {
+      it("decrements the hunger level when invoked", function() {
+        var fido = new Dog("Fido");
+        fido.hungerLevel = 5;
+        fido.eat();
+        expect(fido.hungerLevel).to.equal(4);
+      });
+    });
+    context("when dog is NOT hungry", function() {
+      it("does NOT decrement the hunger level when invoked", function() {
+        var fido = new Dog("Fido");
+        fido.hungerLevel = 0;
+        fido.eat();
+        expect(fido.hungerLevel).to.equal(0);
+      });
+    });  
+  }); 
+ });
+});
 ```
 
-How many times are we writing `dog = Dog.new`? It seems we'll have to do that at the beginning of most specifications.
+How many times are we writing `fido = new Dog()`? It seems we'll have to do that at the beginning of most specifications.
 
 <!--Half-mast -->
 
-### Subject Blocks
-
-We could use `before`, `let`, or `subject` to help us refactor these specifications. Let's prefer using `subject` as the dog is the subject, or thing we are testing. `let` is similar, but may be used when one wants to set up a variable that isn't necessarily the subject, for example it could be the food the dog is eating. Whereas `let` and `subject` are used to setup "dependencies", `before` which is best used to setup an action in advance, such as opening a connection with a database.
-
-```ruby
-describe Dog do
-  # refactors the tests with subject
-  subject(:dog) { Dog.new }
-  describe "::new" do
-    it "initializes a new dog" do
-      expect(dog).to be_a(Dog)
-    end
-  end
-  describe "#name" do
-    it "allows the reading and writing of a name" do
-      dog.name = "Fido"
-      expect(dog.name).to eq("Fido")
-    end
-  end
-  describe "#name" do
-    it "allows the reading and writing of a hunger level" do
-      dog.hunger_level = 5
-      expect(dog.hunger_level).to eq(5)
-    end
-  end
-  describe "#eat" do
-    context "when the dog is hungry" do
-      it "decrements the hunger level when invoked" do
-
-        dog.hunger_level = 5
-        dog.eat
-        expect(dog.hunger_level).to eq(4)
-      end
-    end
-    context "when the dog is full" do
-      it "doesn't decrement the hunger level when invoked" do
-
-        dog.hunger_level = 0
-        dog.eat
-        expect(dog.hunger_level).to eq(0)
-      end
-    end
-  end
-end
-```
-
-<!-- End half-mast -->
-
 ### Before Blocks
 
-We can further refactor the above code with a `before` block in order to setup the state of our dog by calling a few methods on it.
+We can refactor the above code with a `before` block in order to setup the state of our dog by calling a few methods on it.
 
-<!-- Half-mast -->
-
-```ruby
-describe Dog do
-  subject(:dog) { Dog.new }
-  before do
-    dog.name = "Fido"
-    dog.hunger_level = 5
-  end
-  describe "::new" do
-    it "initializes a new dog" do
-      expect(dog).to be_a(Dog)
-    end
-  end
-  describe "#name" do
-    it "allows the reading and writing of a name" do
-      expect(dog.name).to eq("Fido")
-    end
-  end
-  describe "#name" do
-    it "allows the reading and writing of a hunger level" do
-      expect(dog.hunger_level).to eq(5)
-    end
-  end
-  describe "#eat" do
-    context "when the dog is hungry" do
-      it "decrements the hunger level when invoked" do
-        dog.eat
-        expect(dog.hunger_level).to eq(4)
-      end
-    end
-    context "when the dog is full" do
-      it "doesn't decrement the hunger level when invoked" do
-        dog.hunger_level = 0
-        dog.eat
-        expect(dog.hunger_level).to eq(0)
-      end
-    end
-  end
-end
+```javascript
+describe("Dog", function() {
+ var fido;
+ before(function() {
+ 	fido = new Dog("Fido");
+ });
+ describe("new", function() {
+  it("initializes a new dog", function() {
+    expect(typeof(fido)).to.equal("object");
+  });
+  describe("name", function(){
+    it("allows the reading and writing of a name", function() {
+      expect(fido.name).to.equal("Fido");
+    });
+  }); 
+  describe("eat", function() {
+    context("when dog is hungry", function() {
+      it("decrements the hunger level when invoked", function() {
+        fido.hungerLevel = 5;
+        fido.eat();
+        expect(fido.hungerLevel).to.equal(4);
+      });
+    });
+    context("when dog is NOT hungry", function() {
+      it("does NOT decrement the hunger level when invoked", function() {
+        fido.hungerLevel = 0;
+        fido.eat();
+        expect(fido.hungerLevel).to.equal(0);
+      });
+    });  
+  }); 
+ });
+});
 ```
 
 <!-- End half-mast -->
 
->Note: you can pass different options to before.
->
->**before(:each)** is a block of code that runs every time *before each* test is execute.
->
->**before(:all)** is the same concept, except it only runs **once**, *before all* the tests inside it have started.
+>Note: you can also run `beforeEach()` to execute the lines within the `function(){}` for every new test.
 
-<!--2:40 15 minutes -->
+<!--2:45 5 minutes -->
+
+## Closing
+
+### Quiz Questions:
+
+- What is the purpose of Unit testing?
+- Explain what role Mocha plays in testing.
+- How do `describe` and `context` differ?
+- How can `before` be helpful?
+
+<!--15 minutes --
 
 ## Challenge: Cereal Robot Exercise
 
@@ -609,20 +551,9 @@ Split up into groups of 3 or 4. For 15 minutes, on a whiteboard, work with your 
 Goal: When all the tests pass, that means the robot works. However, you're only writing **pending** tests -- don't actually write the code that would make the tests pass.
 
 Constraints: Try to write everything as `describe`, `context`, and `it` blocks.
-
-<!--2:45 5 minutes -->
-
-## Closing
-
-### Quiz Questions:
-
-- What is the purpose of Unit testing?
-- Explain what role RSpec plays in testing.
-- What is `subject` useful for?
-- How do `describe` and `context` differ?
+-->
 
 ### Additional Resources
-- [Structure of RSpec Tests](http://jakegoulding.com/presentations/rspec-structure/)
-- [Better Specs](http://betterspecs.org/)
-- [Code School RSpec](https://www.codeschool.com/courses/testing-with-rspec)
-- [RSpec Cheatsheets](https://www.anchor.com.au/wp-content/uploads/rspec_cheatsheet_attributed.pdf)
+- [Mocha Documentation](https://mochajs.org/)
+- [Getting Started with Node and Mocha](https://semaphoreci.com/community/tutorials/getting-started-with-node-js-and-mocha)
+- [Chai Expectations](http://chaijs.com/api/bdd/)
