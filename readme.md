@@ -89,6 +89,8 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
 
+<!--2:00 but 5 minutes for project 2 -->
+
 <!--1:50 10 minutes -->
 
 ## What is Mocha?
@@ -178,6 +180,8 @@ describe("Person", function() {
 ```
 
 >What does `expect(typeof(matt)).to.equal("object");` mean in regular English?
+
+<!--2:14 -->
 
 <!-- 2:00 25 minutes -->
 
@@ -339,6 +343,8 @@ describe("Dog", function() {
 
 >What is the minimal code one could write to pass these specifications?
 
+<!--2:55 really-->
+
 <!-- 2:25 10 minutes -->
 
 ### Challenge: Hungry Dog
@@ -349,7 +355,7 @@ Add an expectation to the dog that "allows the reading and writing of a hunger l
 
 <!-- End half-mast -->
 
-###Feeding the Dog
+### Feeding the Dog
 
 <!-- Half-mast -->
 
