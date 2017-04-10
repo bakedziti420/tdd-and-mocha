@@ -39,6 +39,8 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 #### Thoughts:
 
+<!--Have devs think about this as they sit down, then ask if they have anything to add after reading the list below -->
+
 * For those of you who are negative to testing, why? What did you or would you do instead?
 * For those of you who are positive to testing, why? What problems did it solve?
 
@@ -183,7 +185,7 @@ describe("Person", function() {
 
 <!--2:14 -->
 
-<!-- 2:00 25 minutes -->
+<!-- 2:00 30 minutes -->
 
 <!-- Half Mast -->
 
@@ -345,7 +347,7 @@ describe("Dog", function() {
 
 <!--2:55 really-->
 
-<!-- 2:25 10 minutes -->
+<!-- 2:30 15 minutes -->
 
 ### Challenge: Hungry Dog
 
@@ -359,7 +361,7 @@ Add an expectation to the dog that "allows the reading and writing of a hunger l
 
 <!-- Half-mast -->
 
-Let's implement a method `eat` which decrements a dog's hunger level when invoked. How would we translate this specification in Mocha tests?
+Let's implement a method `eat` which decrements a dog's hunger level when invoked. How would we translate this specification into Mocha tests?
 
 **/spec/dog_spec.rb**
 
@@ -423,7 +425,7 @@ describe("Dog", function() {
 
 Write the code to pass the above specs!
 
-<!-- 2:35 10 minutes -->
+<!-- 2:45 10 minutes -->
 
 ## Refactoring
 
@@ -516,7 +518,7 @@ describe("Dog", function() {
 
 >Note: you can also run `beforeEach()` to execute the lines within the `function(){}` for every new test.
 
-<!--2:45 5 minutes -->
+<!--2:55 5 minutes -->
 
 ## Closing
 
