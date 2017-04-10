@@ -529,7 +529,7 @@ describe("Dog", function() {
 - How do `describe` and `context` differ?
 - How can `before` be helpful?
 
-<!--15 minutes --
+<!--15 minutes -- Probably a good idea to move this, and potentially even the refactor section to the following day
 
 ## Challenge: Cereal Robot Exercise
 
