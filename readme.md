@@ -1,3 +1,5 @@
+<!-- WDI3 1:48 (survey takes about 20 minutes) -->
+
 <!-- 1:30 5 minutes -->
 
 <!--Hook: Has anyone here tried fixing a car or complicated appliance?  After two hours, you get the piece back in place, or the wheel on straight.  Then what do you do?  (For me, back up and cross fingers that it works.)  The idea behind TDD is to gain a higher confidence that before we flip that switch, before we try to go 80 miles an hour on I-25, the app we are building does what the customer wants.  
@@ -27,6 +29,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 - **Program** in Javascript
 - **Pass tests** in a TDD manner
 
+<!--WDI3 1:52 -->
 <!--1:35 5 minutes -->
 
 ## Do You Test?
@@ -61,6 +64,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 </details>
 
+<!--WDI3 1:57 -->
 <!-- 1:40 10 minutes -->
 
 ## Unit vs Acceptance Tests
@@ -91,9 +95,11 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
 
-<!--2:00 but 5 minutes for project 2 -->
+<!--2:00 but 5 minutes for project 2 in WDI2-->
 
+<!--WDI3 2:06  -->
 <!--1:50 10 minutes -->
+<!-- Key point: this is just a demo, devs should NOT clone this repo, it will just confuse them when we move to the exercise -->
 
 ## What is Mocha?
 
@@ -185,6 +191,7 @@ describe("Person", function() {
 
 <!--2:14 -->
 
+<!--WDI3 2:14 just walked through not much dev input -->
 <!-- 2:00 30 minutes -->
 
 <!-- Half Mast -->
@@ -206,6 +213,8 @@ npm install --save-dev mocha chai
 ```
 
 >After running `mocha`, you should get a message saying `Error: cannot resolve path (or pattern) 'test'`. It's saying, "You haven't written any tests for me to run!"
+
+<!--2:20 WDI3 -->
 
 #### Set up the directory
 
@@ -236,6 +245,7 @@ Does the file it's requiring exist?
 
 Make the file and run the tests again. What happens this time?
 
+<!--2:27 WDI3-->
 <!-- End half-mast, devs catch up -->
 
 **/spec/dog_spec.js**
@@ -320,6 +330,8 @@ module.exports = Dog;
 ```
 
 <!-- End half-mast, stress "pending", "failing", "passing" order -->
+<!--2:34 WDI3 turning over to devs -->
+<!--2:40 when coming back WDI3-->
 
 <!-- Half-mast again -->
 
@@ -345,8 +357,8 @@ describe("Dog", function() {
 
 >What is the minimal code one could write to pass these specifications?
 
-<!--2:55 really-->
-
+<!--2:55 really WDI2-->
+<!--WDI3 2:47 -->
 <!-- 2:30 15 minutes -->
 
 ### Challenge: Hungry Dog
@@ -385,6 +397,7 @@ describe("Dog", function() {
 
 Write the code that passes the above specifications.
 
+<!--2:56 WDI3 -->
 ### Context
 
 <!-- Half-mast -->
@@ -425,6 +438,7 @@ describe("Dog", function() {
 
 Write the code to pass the above specs!
 
+<!-- 3:08 WDI3 -->
 <!-- 2:45 10 minutes -->
 
 ## Refactoring
@@ -518,6 +532,7 @@ describe("Dog", function() {
 
 >Note: you can also run `beforeEach()` to execute the lines within the `function(){}` for every new test.
 
+<!--WDI 3:17 no time for catch-up on before block -->
 <!--2:55 5 minutes -->
 
 ## Closing
@@ -528,6 +543,8 @@ describe("Dog", function() {
 - Explain what role Mocha plays in testing.
 - How do `describe` and `context` differ?
 - How can `before` be helpful?
+
+<!--3:25 WDI3 -->
 
 <!--15 minutes -- Probably a good idea to move this, and potentially even the refactor section to the following day
 
