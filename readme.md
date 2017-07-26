@@ -250,7 +250,7 @@ Does the file it's requiring exist?
 
 Make the file and run the tests again. What happens this time?
 <!--11:39 WDI4 turning over to devs -->
-
+<!--11:43 WDI4 coming back-->
 
 <!--2:27 WDI3-->
 <!-- End half-mast, devs catch up -->
@@ -339,6 +339,8 @@ module.exports = Dog;
 <!-- End half-mast, stress "pending", "failing", "passing" order -->
 <!--2:34 WDI3 turning over to devs -->
 <!--2:40 when coming back WDI3-->
+<!--11:47 turning over to devs WDI4-->
+<!--WDI4 coming back 11:53-->
 
 <!-- Half-mast again -->
 
@@ -363,6 +365,8 @@ describe("Dog", function() {
 <!-- End half-mast -->
 
 >What is the minimal code one could write to pass these specifications?
+<!--WDI4 11:56 turning over to devs -->
+<!--WDI4 coming back 12:00 -->
 
 <!--2:55 really WDI2-->
 <!--WDI3 2:47 -->
@@ -375,6 +379,7 @@ describe("Dog", function() {
 Add an expectation to the dog that "allows the reading and writing of a hunger level". When complete, ensure the tests are written correctly by watching them fail. Finally implement the code that passes the new expectation.
 
 <!-- End half-mast -->
+<!--WDI4 12:07 coming back from challenge-->
 
 ### Feeding the Dog
 
@@ -403,6 +408,9 @@ describe("Dog", function() {
 ### Challenge: Teach the Dog to Eat
 
 Write the code that passes the above specifications.
+
+<!--12:10 WDI4 turning over to devs -->
+<!--WDI4 coming back 12:18 -->
 
 <!--2:56 WDI3 -->
 ### Context
@@ -444,6 +452,9 @@ describe("Dog", function() {
 ### Challenge: Don't Over Eat
 
 Write the code to pass the above specs!
+
+<!--12:23 turning over to devs WDI4 -->
+<!--12:28 coming back WDI4 -->
 
 <!-- 3:08 WDI3 -->
 <!-- 2:45 10 minutes -->
@@ -496,6 +507,8 @@ How many times are we writing `fido = new Dog()`? It seems we'll have to do that
 
 <!--Half-mast -->
 
+<!--WDI4 (after lunch break) 1:30 -->
+
 ### Before Blocks
 
 We can refactor the above code with a `before` block in order to setup the state of our dog by calling a few methods on it.
@@ -539,6 +552,7 @@ describe("Dog", function() {
 
 >Note: you can also run `beforeEach()` to execute the lines within the `function(){}` for every new test.
 
+<!--WDI4 1:41 -->
 <!--WDI 3:17 no time for catch-up on before block -->
 <!--2:55 5 minutes -->
 
@@ -551,6 +565,7 @@ describe("Dog", function() {
 - How do `describe` and `context` differ?
 - How can `before` be helpful?
 
+<!--WDI4 1:46 -->
 <!--3:25 WDI3 -->
 
 <!--15 minutes -- Probably a good idea to move this, and potentially even the refactor section to the following day
@@ -559,7 +574,7 @@ describe("Dog", function() {
 
 [Watch this video](https://www.youtube.com/watch?v=E2evC2xTNWg).
 
-Split up into groups of 3 or 4. For 15 minutes, on a whiteboard, work with your group to draft the unit tests for this cereal-delivering robot.
+Split up into groups of 3 or 4. For a few minutes, on a whiteboard, work with your group to draft the unit tests for this cereal-delivering robot.
 
 Goal: When all the tests pass, that means the robot works. However, you're only writing **pending** tests -- don't actually write the code that would make the tests pass.
 
