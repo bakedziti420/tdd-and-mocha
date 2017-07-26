@@ -1,4 +1,5 @@
 <!-- WDI3 1:48 (survey takes about 20 minutes) -->
+<!--WDI4 11:02-->
 
 <!-- 1:30 5 minutes -->
 
@@ -62,6 +63,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 </details>
 
+<!--WDI4 11:13-->
 <!--WDI3 1:57 -->
 <!-- 1:40 10 minutes -->
 
@@ -87,14 +89,15 @@ We've asked you to write user stories. Writing acceptance tests is a very simila
 
 When we think of "testing" we tend to think of something you do *after* you've created something, to make sure it works. With TDD, you're encouraged to write the tests *first* before you even start writing actual code.
 
-<!-- Catch-phrase with Unit Tests, Acceptance Tests, TDD, Code Coverage -->
-
 ## TDD Review
 
 ![TDD Example](http://joshldavis.com/img/tdd-vs-bdd/tdd-flowchart.png)
 
+<!-- Catch-phrase with Unit Tests, Acceptance Tests, TDD, Code Coverage -->
+
 <!--2:00 but 5 minutes for project 2 in WDI2-->
 
+<!--WDI4 11:23 -->
 <!--WDI3 2:06  -->
 <!--1:50 10 minutes -->
 <!-- Key point: this is just a demo, devs should NOT clone this repo, it will just confuse them when we move to the exercise -->
@@ -189,6 +192,7 @@ describe("Person", function() {
 
 <!--2:14 -->
 
+<!--11:30 WDI4 -->
 <!--WDI3 2:14 just walked through not much dev input -->
 <!-- 2:00 30 minutes -->
 
@@ -212,6 +216,9 @@ npm install --save-dev mocha chai
 
 >After running `mocha`, you should get a message saying `Error: cannot resolve path (or pattern) 'test'`. It's saying, "You haven't written any tests for me to run!"
 
+<!--11:31 WDI4 turning over to devs-->
+
+<!--11:36 WDI4-->
 <!--2:20 WDI3 -->
 
 #### Set up the directory
@@ -224,7 +231,7 @@ Inside the `test` directory, add a file called `dog_spec.js`.
 
 Let's start defining the design of our program with certain specifications. Let's spec out our `Dog` with some psuedocode. That's right, we're writing our tests first!
 
-**/spec/dog_spec.js**
+**/test/dog_spec.js**
 
 ```javascript
 var Dog = require("../models/dog");
@@ -242,6 +249,8 @@ Now let's run `mocha`. What happened?
 Does the file it's requiring exist?
 
 Make the file and run the tests again. What happens this time?
+<!--11:39 WDI4 turning over to devs -->
+
 
 <!--2:27 WDI3-->
 <!-- End half-mast, devs catch up -->
