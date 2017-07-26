@@ -255,7 +255,7 @@ Make the file and run the tests again. What happens this time?
 <!--2:27 WDI3-->
 <!-- End half-mast, devs catch up -->
 
-**/spec/dog_spec.js**
+**/test/dog_spec.js**
 
 ```javascript
 var Dog = require("../models/dog");
@@ -413,7 +413,7 @@ Imagine we want the eat method to behave differently in different contexts. For 
 
 Use `describe` for "things" and `context` for "states.
 
-**/spec/dog_spec.rb**
+**/test/dog_spec.rb**
 
 ```javascript
 describe("Dog", function() {
