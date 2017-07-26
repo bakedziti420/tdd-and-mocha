@@ -36,8 +36,6 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 #### Place yourselves somewhere in the following ranges:
 
-* I have used TDD **or** I have never used TDD
-
 * I love the idea of TDD **or** I hate the idea of TDD
 
 #### Thoughts:
@@ -220,7 +218,7 @@ npm install --save-dev mocha chai
 
 Make a `test` directory.
 
-Inside the `test` directory, add a file called `dog_spec.js`. Additionally, create a `models` directory and a file inside it, `dog.js`, where we will define our class `Dog`.
+Inside the `test` directory, add a file called `dog_spec.js`.
 
 ### Writing our Specification
 
