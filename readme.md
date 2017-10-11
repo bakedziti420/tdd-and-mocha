@@ -1,5 +1,6 @@
 <!-- WDI3 1:48 (survey takes about 20 minutes) -->
 <!--WDI4 11:02-->
+<!--WDI5 11:03 -->
 
 <!-- 1:30 5 minutes -->
 
@@ -63,6 +64,7 @@ Test Driven Development leads to better code. TDD is extremely helpful when impl
 
 </details>
 
+<!--WDI5 11:14  -->
 <!--WDI4 11:13-->
 <!--WDI3 1:57 -->
 <!-- 1:40 10 minutes -->
@@ -97,6 +99,7 @@ When we think of "testing" we tend to think of something you do *after* you've c
 
 <!--2:00 but 5 minutes for project 2 in WDI2-->
 
+<!--WDI5 11:28 -->
 <!--WDI4 11:23 -->
 <!--WDI3 2:06  -->
 <!--1:50 10 minutes -->
@@ -218,6 +221,7 @@ npm install --save-dev mocha chai
 
 <!--11:31 WDI4 turning over to devs-->
 
+<!--WDI5 11:40 -->
 <!--11:36 WDI4-->
 <!--2:20 WDI3 -->
 
@@ -252,6 +256,7 @@ Make the file and run the tests again. What happens this time?
 <!--11:39 WDI4 turning over to devs -->
 <!--11:43 WDI4 coming back-->
 
+<!--WDI5 11:47 -->
 <!--2:27 WDI3-->
 <!-- End half-mast, devs catch up -->
 
@@ -336,6 +341,7 @@ function Dog() {
 module.exports = Dog;
 ```
 
+<!--WDI5 11:57 -->
 <!-- End half-mast, stress "pending", "failing", "passing" order -->
 <!--2:34 WDI3 turning over to devs -->
 <!--2:40 when coming back WDI3-->
@@ -367,7 +373,7 @@ describe("Dog", function() {
 >What is the minimal code one could write to pass these specifications?
 <!--WDI4 11:56 turning over to devs -->
 <!--WDI4 coming back 12:00 -->
-
+<!--WDI5 12:03  -->
 <!--2:55 really WDI2-->
 <!--WDI3 2:47 -->
 <!-- 2:30 15 minutes -->
@@ -380,7 +386,7 @@ Add an expectation to the dog that "allows the reading and writing of a hunger l
 
 <!-- End half-mast -->
 <!--WDI4 12:07 coming back from challenge-->
-
+<!--WDI5 12:11 -->
 ### Feeding the Dog
 
 <!-- Half-mast -->
@@ -412,6 +418,7 @@ Write the code that passes the above specifications.
 <!--12:10 WDI4 turning over to devs -->
 <!--WDI4 coming back 12:18 -->
 
+<!--WDI5 12:19  -->
 <!--2:56 WDI3 -->
 ### Context
 
@@ -455,7 +462,7 @@ Write the code to pass the above specs!
 
 <!--12:23 turning over to devs WDI4 -->
 <!--12:28 coming back WDI4 -->
-
+<!--WDI5 12:27  -->
 <!-- 3:08 WDI3 -->
 <!-- 2:45 10 minutes -->
 
@@ -552,6 +559,7 @@ describe("Dog", function() {
 
 >Note: you can also run `beforeEach()` to execute the lines within the `function(){}` for every new test.
 
+<!--WDI5 12:35  -->
 <!--WDI4 1:41 -->
 <!--WDI 3:17 no time for catch-up on before block -->
 <!--2:55 5 minutes -->
@@ -580,6 +588,8 @@ Goal: When all the tests pass, that means the robot works. However, you're only 
 
 Constraints: Try to write everything as `describe`, `context`, and `it` blocks.
 -->
+
+<!--WDI5 12:44 -->
 
 ### Additional Resources
 - [Mocha Documentation](https://mochajs.org/)
